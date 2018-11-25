@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CarRentalSystem
 {
-    public partial class Form1 : Form
+    public partial class Car : Component
     {
-        public Form1()
+        public Car()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        public Car(IContainer container)
         {
+            container.Add(this);
 
+            InitializeComponent();
         }
     }
 }

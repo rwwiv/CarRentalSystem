@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CarRentalSystem
 {
-    public partial class Car : Component
+    public class Car
     {
-        public Car()
-        {
-            InitializeComponent();
-        }
+        private string vin { get; set; }
+        private string color { get; set; }
+        private string model { get; set; }
+        private string make { get; set; }
+        private Boolean isAvailable { get; set; }
+        private int costPerDay { get; set; }
 
-        public Car(IContainer container)
-        {
-            container.Add(this);
-
-            InitializeComponent();
-        }
     }
 }

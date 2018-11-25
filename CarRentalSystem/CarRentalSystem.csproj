@@ -53,16 +53,16 @@
     <Compile Include="DBConnector.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Views\Forms\LoginForm.cs">
+    <Compile Include="Views\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Forms\LoginForm.Designer.cs">
+    <Compile Include="Views\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Menus\MainMenu.cs">
+    <Compile Include="Views\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Menus\MainMenu.Designer.cs">
+    <Compile Include="Views\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -71,22 +71,22 @@
     <Compile Include="Models\Session.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\UpdateController.cs" />
-    <Compile Include="Views\Forms\RentConfirm.cs">
+    <Compile Include="Views\RentConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Forms\RentConfirm.Designer.cs">
+    <Compile Include="Views\RentConfirm.Designer.cs">
       <DependentUpon>RentConfirm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Forms\UpdateConfirm.cs">
+    <Compile Include="Views\UpdateConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Forms\UpdateConfirm.Designer.cs">
+    <Compile Include="Views\UpdateConfirm.Designer.cs">
       <DependentUpon>UpdateConfirm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\Forms\LoginForm.resx">
+    <EmbeddedResource Include="Views\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Menus\MainMenu.resx">
+    <EmbeddedResource Include="Views\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

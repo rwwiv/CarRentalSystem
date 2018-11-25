@@ -33,6 +33,7 @@
             this.UsernameLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.LoginButton = new System.Windows.Forms.Button();
+            this.LoginFailureLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // UsernameTextBox
@@ -45,7 +46,6 @@
             this.UsernameTextBox.Name = "UsernameTextBox";
             this.UsernameTextBox.Size = new System.Drawing.Size(267, 20);
             this.UsernameTextBox.TabIndex = 0;
-            this.UsernameTextBox.UseWaitCursor = true;
             // 
             // PasswordTextBox
             // 
@@ -84,11 +84,24 @@
             this.LoginButton.Text = "Login";
             this.LoginButton.UseVisualStyleBackColor = true;
             // 
+            // LoginFailureLabel
+            // 
+            this.LoginFailureLabel.AutoSize = true;
+            this.LoginFailureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginFailureLabel.ForeColor = System.Drawing.Color.Maroon;
+            this.LoginFailureLabel.Location = new System.Drawing.Point(302, 249);
+            this.LoginFailureLabel.Name = "LoginFailureLabel";
+            this.LoginFailureLabel.Size = new System.Drawing.Size(92, 15);
+            this.LoginFailureLabel.TabIndex = 5;
+            this.LoginFailureLabel.Text = "Login Failure";
+            this.LoginFailureLabel.Visible = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.LoginFailureLabel);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.UsernameLabel);
@@ -110,6 +123,7 @@
         private System.Windows.Forms.Label UsernameLabel;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Button LoginButton;
+        private System.Windows.Forms.Label LoginFailureLabel;
     }
 }
 

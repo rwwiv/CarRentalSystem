@@ -14,6 +14,5 @@ namespace CarRentalSystem
         private string make { get; set; }
         private Boolean isAvailable { get; set; }
         private int costPerDay { get; set; }
-
     }
 }

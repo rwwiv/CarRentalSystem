@@ -51,15 +51,11 @@
     <Compile Include="Models\Car.cs" />
     <Compile Include="DBConnector.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Views\LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\LoginForm.cs" />
     <Compile Include="Views\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Views\MainMenu.cs" />
     <Compile Include="Views\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>

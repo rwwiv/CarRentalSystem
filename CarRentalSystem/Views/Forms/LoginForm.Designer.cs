@@ -39,28 +39,25 @@
             // UsernameTextBox
             // 
             this.UsernameTextBox.AcceptsTab = true;
-            this.UsernameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UsernameTextBox.Location = new System.Drawing.Point(305, 190);
+            this.UsernameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.UsernameTextBox.Location = new System.Drawing.Point(70, 16);
             this.UsernameTextBox.Name = "UsernameTextBox";
-            this.UsernameTextBox.Size = new System.Drawing.Size(267, 20);
+            this.UsernameTextBox.Size = new System.Drawing.Size(266, 20);
             this.UsernameTextBox.TabIndex = 0;
             // 
             // PasswordTextBox
             // 
-            this.PasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PasswordTextBox.Location = new System.Drawing.Point(305, 217);
+            this.PasswordTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PasswordTextBox.Location = new System.Drawing.Point(70, 43);
             this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.Size = new System.Drawing.Size(267, 20);
+            this.PasswordTextBox.Size = new System.Drawing.Size(266, 20);
             this.PasswordTextBox.TabIndex = 1;
             // 
             // UsernameLabel
             // 
+            this.UsernameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UsernameLabel.AutoSize = true;
-            this.UsernameLabel.Location = new System.Drawing.Point(244, 193);
+            this.UsernameLabel.Location = new System.Drawing.Point(9, 19);
             this.UsernameLabel.Name = "UsernameLabel";
             this.UsernameLabel.Size = new System.Drawing.Size(55, 13);
             this.UsernameLabel.TabIndex = 2;
@@ -68,8 +65,9 @@
             // 
             // PasswordLabel
             // 
+            this.PasswordLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(246, 220);
+            this.PasswordLabel.Location = new System.Drawing.Point(11, 46);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(53, 13);
             this.PasswordLabel.TabIndex = 3;
@@ -77,7 +75,8 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(496, 244);
+            this.LoginButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LoginButton.Location = new System.Drawing.Point(261, 70);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 4;
@@ -86,10 +85,11 @@
             // 
             // LoginFailureLabel
             // 
+            this.LoginFailureLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LoginFailureLabel.AutoSize = true;
             this.LoginFailureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginFailureLabel.ForeColor = System.Drawing.Color.Maroon;
-            this.LoginFailureLabel.Location = new System.Drawing.Point(302, 249);
+            this.LoginFailureLabel.Location = new System.Drawing.Point(67, 75);
             this.LoginFailureLabel.Name = "LoginFailureLabel";
             this.LoginFailureLabel.Size = new System.Drawing.Size(92, 15);
             this.LoginFailureLabel.TabIndex = 5;
@@ -100,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(351, 104);
             this.Controls.Add(this.LoginFailureLabel);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.PasswordLabel);

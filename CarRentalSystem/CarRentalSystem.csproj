@@ -68,17 +68,23 @@
     <Compile Include="DBConnector.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Views\LoginForm.cs">
+    <Compile Include="Views\Forms\AdminMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\LoginForm.Designer.cs">
+    <Compile Include="Views\Forms\AdminMenuForm.Designer.cs">
+      <DependentUpon>AdminMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MainMenu.cs">
+    <Compile Include="Views\Forms\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MainMenu.Designer.cs">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <Compile Include="Views\Forms\MainMenuForm.Designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,23 +92,35 @@
     <Compile Include="Models\Session.cs" />
     <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\UpdateController.cs" />
-    <Compile Include="Views\RentConfirm.cs">
+    <Compile Include="Views\Forms\RentConfirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\RentConfirm.Designer.cs">
-      <DependentUpon>RentConfirm.cs</DependentUpon>
+    <Compile Include="Views\Forms\RentConfirmForm.Designer.cs">
+      <DependentUpon>RentConfirmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UpdateConfirm.cs">
+    <Compile Include="Views\Forms\UpdateConfirmForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\UpdateConfirm.Designer.cs">
-      <DependentUpon>UpdateConfirm.cs</DependentUpon>
+    <Compile Include="Views\Forms\UpdateConfirmForm.Designer.cs">
+      <DependentUpon>UpdateConfirmForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\LoginForm.resx">
+    <Compile Include="Views\Forms\UserMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Forms\UserMenuForm.Designer.cs">
+      <DependentUpon>UserMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\CarListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\CarListItem.Designer.cs">
+      <DependentUpon>CarListItem.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainMenu.resx">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Forms\MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -113,6 +131,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\UserControls\CarListItem.resx">
+      <DependentUpon>CarListItem.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -146,6 +167,7 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+    <Content Include="1448654230_city-car.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

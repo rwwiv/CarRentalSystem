@@ -8,5 +8,8 @@ namespace CarRentalSystem.Models
 {
     class User
     {
+        private string username { get; set; }
+        private string password { get; set; }
+        private int userLevel { get; set;  }
     }
 }

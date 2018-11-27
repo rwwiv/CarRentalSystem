@@ -8,5 +8,9 @@ namespace CarRentalSystem.Controllers
 {
     class RentController
     {
+        public void rent(Car car,string user)
+        {
+            //TODO
+        }
     }
 }

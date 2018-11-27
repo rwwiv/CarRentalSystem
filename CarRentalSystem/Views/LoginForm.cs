@@ -21,5 +21,10 @@ namespace CarRentalSystem
         {
 
         }
+
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+            //TODO
+        }
     }
 }

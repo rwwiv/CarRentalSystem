@@ -13,10 +13,39 @@ namespace CarRentalSystem
         SqlConnection cnn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DB.mdf;Integrated Security = True");
         public string getUserCred(string username)
         {
+            string output = "";
             cnn.Open();
-            SqlCommand query = new SqlCommand("SELECT PASSWORD FROM USER WHERE USERNAME = " + username ,cnn);
-            SqlDataReader resultList = query.ExecuteReader();
-            return resultList.GetValue(0).ToString();
+            SqlCommand query = new SqlCommand("SELECT PASSWORD FROM USERS WHERE USERNAME = '" + username + "'" ,cnn);
+            SqlDataReader resultList = null;
+            try
+            {
+                resultList = query.ExecuteReader();
+                if (resultList.Read())
+                {
+                    output = resultList.GetValue(0).ToString();
+                }
+                else
+                {
+                    resultList.Close();
+                    query.Dispose();
+                    cnn.Close();
+                    output = "userNotFound";
+                }
+            }
+            catch
+            {
+                query.Dispose();
+                cnn.Close();
+                output = "badQuery";
+            }
+            finally
+            {
+                resultList.Close();
+                query.Dispose();
+                cnn.Close();
+            }
+
+            return output;
         }
 
         public int getLevel(string username)

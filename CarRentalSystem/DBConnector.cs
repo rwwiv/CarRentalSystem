@@ -11,6 +11,7 @@ namespace CarRentalSystem
     class DBConnector
     {
         SqlConnection cnn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DB.mdf;Integrated Security = True");
+
         public string getUserCred(string username)
         {
             string output = "";
@@ -23,6 +24,9 @@ namespace CarRentalSystem
                 if (resultList.Read())
                 {
                     output = resultList.GetValue(0).ToString();
+                    resultList.Close();
+                    query.Dispose();
+                    cnn.Close();
                 }
                 else
                 {
@@ -38,20 +42,42 @@ namespace CarRentalSystem
                 cnn.Close();
                 output = "badQuery";
             }
-            finally
-            {
-                resultList.Close();
-                query.Dispose();
-                cnn.Close();
-            }
 
             return output;
         }
 
         public int getLevel(string username)
         {
-            //TODO
-            return -1;
+            int output = -1;
+            cnn.Open();
+            SqlCommand query = new SqlCommand("SELECT USERLEVEL.TYPE from USERLEVEL INNER JOIN USERS ON USERS.USERLEVEL = USERLEVEL.LID and USERS.USERNAME = '"+username +"'; ", cnn);
+            SqlDataReader resultList = null;
+            try
+            {
+                resultList = query.ExecuteReader();
+                if (resultList.Read())
+                {
+                    output = Convert.ToInt32(resultList.GetValue(0));
+                    resultList.Close();
+                    query.Dispose();
+                    cnn.Close();
+                }
+                else
+                {
+                    resultList.Close();
+                    query.Dispose();
+                    cnn.Close();
+                    output = -1;
+                }
+            }
+            catch
+            {
+                query.Dispose();
+                cnn.Close();
+                output = -1;
+            }
+
+            return output;
         }
 
         public void saveSession(Session session)

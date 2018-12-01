@@ -50,7 +50,7 @@ namespace CarRentalSystem
         {
             int output = -1;
             cnn.Open();
-            SqlCommand query = new SqlCommand("SELECT USERLEVEL.TYPE from USERLEVEL INNER JOIN USERS ON USERS.USERLEVEL = USERLEVEL.LID and USERS.USERNAME = '"+username +"'; ", cnn);
+            SqlCommand query = new SqlCommand("SELECT USERLEVEL.TYPE from USERLEVEL INNER JOIN USERS ON USERS.USERLEVEL = USERLEVEL.LID and USERS.USERNAME = '"+ username +"'; ", cnn);
             SqlDataReader resultList = null;
             try
             {
@@ -82,35 +82,12 @@ namespace CarRentalSystem
 
         public List<Car> getAllCars()
         {
-            cnn.Open();
-            SqlCommand query = new SqlCommand("SELECT PASSWORD FROM USERS WHERE USERNAME = '" + username + "'", cnn);
-            SqlDataReader resultList = null;
-            try
-            {
-                resultList = query.ExecuteReader();
-                if (resultList.Read())
-                {
-                    output = resultList.GetValue(0).ToString();
-                    resultList.Close();
-                    query.Dispose();
-                    cnn.Close();
-                }
-                else
-                {
-                    resultList.Close();
-                    query.Dispose();
-                    cnn.Close();
-                    output = "userNotFound";
-                }
-            }
-            catch
-            {
-                query.Dispose();
-                cnn.Close();
-                output = "badQuery";
-            }
+            return null;
+        }
 
-            return output;
+        public List<Car> getAllAvailableCars()
+        {
+            return null;
         }
         public void saveSession(Session session)
         {

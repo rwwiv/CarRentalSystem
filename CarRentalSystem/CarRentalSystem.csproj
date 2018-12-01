@@ -80,6 +80,10 @@
       <DependentUpon>DBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DBEntities.cs" />
+    <Compile Include="Migrations\201812012130247_FixingModels.cs" />
+    <Compile Include="Migrations\201812012130247_FixingModels.Designer.cs">
+      <DependentUpon>201812012130247_FixingModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="DBConnector.cs" />
@@ -133,6 +137,9 @@
     <Compile Include="Views\UserControls\CarListItem.Designer.cs">
       <DependentUpon>CarListItem.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Migrations\201812012130247_FixingModels.resx">
+      <DependentUpon>201812012130247_FixingModels.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +195,13 @@
       <Install>false</Install>
     </BootstrapperPackage>
     <Content Include="1448654230_city-car.png" />
+    <Content Include="DB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB_log.ldf">
+      <DependentUpon>DB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

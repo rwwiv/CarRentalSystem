@@ -11,9 +11,9 @@ namespace CarRentalSystem
     {
         [Key]
         public int rentalId { get; set; }
-        private Car car { get; set; }
-        private double cost { get; set; }
-        private DateTime timeStart { get; set; }
-        private DateTime timeEnd { get; set; }
+        public Car car { get; set; }
+        public double cost { get; set; }
+        public DateTime timeStart { get; set; }
+        public DateTime timeEnd { get; set; }
     }
 }

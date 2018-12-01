@@ -8,8 +8,9 @@ namespace CarRentalSystem
 {
     public class Session
     {
-        private string username { get; set; }
-        private DateTime login { get; set; }
-        private DateTime logout { get; set; }
+        public int sessionId { get; set; }
+        public string username { get; set; }
+        public DateTime login { get; set; }
+        public DateTime logout { get; set; }
     }
 }

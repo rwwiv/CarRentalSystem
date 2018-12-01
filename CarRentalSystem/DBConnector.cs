@@ -80,9 +80,41 @@ namespace CarRentalSystem
             return output;
         }
 
+        public List<Car> getAllCars()
+        {
+            cnn.Open();
+            SqlCommand query = new SqlCommand("SELECT PASSWORD FROM USERS WHERE USERNAME = '" + username + "'", cnn);
+            SqlDataReader resultList = null;
+            try
+            {
+                resultList = query.ExecuteReader();
+                if (resultList.Read())
+                {
+                    output = resultList.GetValue(0).ToString();
+                    resultList.Close();
+                    query.Dispose();
+                    cnn.Close();
+                }
+                else
+                {
+                    resultList.Close();
+                    query.Dispose();
+                    cnn.Close();
+                    output = "userNotFound";
+                }
+            }
+            catch
+            {
+                query.Dispose();
+                cnn.Close();
+                output = "badQuery";
+            }
+
+            return output;
+        }
         public void saveSession(Session session)
         {
-            //TODO
+           
         }
 
         public void logoutSession(Session session)
@@ -106,5 +138,42 @@ namespace CarRentalSystem
             //TODO
         }
 
+        private int generateID(string table)
+        {
+            int output = -1;
+            cnn.Open();
+            SqlCommand query = new SqlCommand("SELECT MAX(SESSION_ID) FROM " + table + ";", cnn);
+            SqlDataReader resultList = null;
+            try
+            {
+                resultList = query.ExecuteReader();
+                if (resultList.Read())
+                {
+                    output = (Convert.ToInt32(resultList.GetValue(0))+1);
+                    resultList.Close();
+                    query.Dispose();
+                    cnn.Close();
+                }
+                else
+                {
+                    resultList.Close();
+                    query.Dispose();
+                    cnn.Close();
+                    output = -1;
+                }
+            }
+            catch
+            {
+                query.Dispose();
+                cnn.Close();
+                output = -1;
+            }
+            return output;
+        }
+
+        private string toSqlDateTime(DateTime dateTime)
+        {
+            return dateTime.ToString("yyyyMMdd hh:mm:ss tt");
+        }
     }
 }

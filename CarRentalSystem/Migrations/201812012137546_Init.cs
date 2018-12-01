@@ -3,7 +3,7 @@ namespace CarRentalSystem.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FixingModels : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -25,6 +25,9 @@ namespace CarRentalSystem.Migrations
                 c => new
                     {
                         rentalId = c.Int(nullable: false, identity: true),
+                        cost = c.Double(nullable: false),
+                        timeStart = c.DateTime(nullable: false),
+                        timeEnd = c.DateTime(nullable: false),
                         car_vin = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.rentalId)

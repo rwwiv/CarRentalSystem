@@ -80,9 +80,9 @@
       <DependentUpon>DBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DBEntities.cs" />
-    <Compile Include="Migrations\201812012130247_FixingModels.cs" />
-    <Compile Include="Migrations\201812012130247_FixingModels.Designer.cs">
-      <DependentUpon>201812012130247_FixingModels.cs</DependentUpon>
+    <Compile Include="Migrations\201812012137546_Init.cs" />
+    <Compile Include="Migrations\201812012137546_Init.Designer.cs">
+      <DependentUpon>201812012137546_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
@@ -137,8 +137,8 @@
     <Compile Include="Views\UserControls\CarListItem.Designer.cs">
       <DependentUpon>CarListItem.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\201812012130247_FixingModels.resx">
-      <DependentUpon>201812012130247_FixingModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812012137546_Init.resx">
+      <DependentUpon>201812012137546_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -199,9 +199,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="DB_log.ldf">
-      <DependentUpon>DB.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>DB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

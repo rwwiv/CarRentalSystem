@@ -8,5 +8,10 @@ namespace CarRentalSystem
 {
     class UpdateController
     {
+
+        public void update(Car car)
+        {
+            //TODO
+        }
     }
 }

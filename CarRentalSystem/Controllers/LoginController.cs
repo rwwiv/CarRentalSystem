@@ -8,5 +8,14 @@ namespace CarRentalSystem
 {
     class LoginController
     {
+        public void verifyUser(string username, string password)
+        {
+            //TODO
+        }
+
+        public void validate(string input)
+        {
+            //TODO
+        }
     }
 }

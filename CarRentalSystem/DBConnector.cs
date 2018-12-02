@@ -19,6 +19,9 @@ namespace CarRentalSystem
             {
                 var output = cnn.Query<string>("select User.password from User where User.username = '" + username + "';", new DynamicParameters());
                 var resultList = output.ToList<string>();
+                if (resultList.Count <= 0)
+                    return null;
+                else
                 return resultList.First();
             }
 
@@ -30,7 +33,10 @@ namespace CarRentalSystem
             {
                 var output = cnn.Query<int>("select User.user_level from User where User.username = '" + username + "';", new DynamicParameters());
                 var resultList = output.ToList<int>();
-                return resultList.First();
+                if (resultList.Count <= 0)
+                    return -1;
+                else
+                    return resultList.First();
             }
         }
 
@@ -83,7 +89,10 @@ namespace CarRentalSystem
             {
                 var output = cnn.Query<int>("select Car.is_available from Car where Car.vin = '" + car.vin + "';", new DynamicParameters());
                 var resultList = output.ToList<int>();
-                return Convert.ToBoolean(resultList.First());
+                if (resultList.Count <= 0)
+                    return false;
+                else
+                    return Convert.ToBoolean(resultList.First());
             }
         }
 

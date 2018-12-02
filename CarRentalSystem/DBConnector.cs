@@ -100,7 +100,7 @@ namespace CarRentalSystem
         {
             using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                int rowsEffected = cnn.Execute("Update Car Set is_available = " + Convert.ToInt32(car.isAvailable) + "where vin = '" + car.vin + "'", car);
+                int rowsEffected = cnn.Execute("Update Car Set is_available = " + Convert.ToInt32(car.is_available) + "where vin = '" + car.vin + "'", car);
 
                 if (rowsEffected <= 0)
                     return false;

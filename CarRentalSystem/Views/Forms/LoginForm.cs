@@ -41,9 +41,11 @@ namespace CarRentalSystem
             else
             {
                 //Success
-                if (LoginController.verifyUser(UsernameTextBox.Text, PasswordTextBox.Text))
+                if (LoginController.verifyUser(UsernameTextBox.Text, PasswordTextBox.Text, this))
                 {
-                    this.Close();
+                    this.Hide();
+                    this.UsernameTextBox.Text = String.Empty;
+                    this.PasswordTextBox.Text = String.Empty;
                 }
                 //Failure
                 else

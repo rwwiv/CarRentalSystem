@@ -28,7 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // UserMenuForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(764, 611);
+            this.Name = "UserMenuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -24,7 +24,12 @@ namespace CarRentalSystem
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            //TODO
+            DBConnector cnn = new DBConnector();
+            Session session = new Session();
+            session.username = "testUser";
+            session.login = new DateTime(1999, 12, 12, 12, 12, 12);
+            cnn.saveSession(session);
+            System.Threading.Thread.Sleep(20);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace CarRentalSystem
     {
         [Key]
         public int rentalId { get; set; }
-        public Car car { get; set; }
+        public string car { get; set; }
         public double cost { get; set; }
         public DateTime timeStart { get; set; }
         public DateTime timeEnd { get; set; }

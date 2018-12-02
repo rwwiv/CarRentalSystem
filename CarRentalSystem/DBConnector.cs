@@ -5,152 +5,96 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Data;
+using System.Data.SQLite;
+using Dapper;
 
 namespace CarRentalSystem
 {
     class DBConnector
     {
-        SqlConnection cnn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DB.mdf;Integrated Security = True");
-
         public string getUserCred(string username)
         {
-            string output = "";
-            cnn.Open();
-            SqlCommand query = new SqlCommand("SELECT PASSWORD FROM USERS WHERE USERNAME = '" + username + "'" ,cnn);
-            SqlDataReader resultList = null;
-            try
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                resultList = query.ExecuteReader();
-                if (resultList.Read())
-                {
-                    output = resultList.GetValue(0).ToString();
-                    resultList.Close();
-                    query.Dispose();
-                    cnn.Close();
-                }
-                else
-                {
-                    resultList.Close();
-                    query.Dispose();
-                    cnn.Close();
-                    output = "userNotFound";
-                }
-            }
-            catch
-            {
-                query.Dispose();
-                cnn.Close();
-                output = "badQuery";
+                var output = cnn.Query<string>("select User.password from User where User.username = '" + username + "';", new DynamicParameters());
+                var resultList = output.ToList<string>();
+                return resultList.First();
             }
 
-            return output;
         }
 
         public int getLevel(string username)
         {
-            int output = -1;
-            cnn.Open();
-            SqlCommand query = new SqlCommand("SELECT USERLEVEL.TYPE from USERLEVEL INNER JOIN USERS ON USERS.USERLEVEL = USERLEVEL.LID and USERS.USERNAME = '"+ username +"'; ", cnn);
-            SqlDataReader resultList = null;
-            try
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                resultList = query.ExecuteReader();
-                if (resultList.Read())
-                {
-                    output = Convert.ToInt32(resultList.GetValue(0));
-                    resultList.Close();
-                    query.Dispose();
-                    cnn.Close();
-                }
-                else
-                {
-                    resultList.Close();
-                    query.Dispose();
-                    cnn.Close();
-                    output = -1;
-                }
+                var output = cnn.Query<int>("select User.user_level from User where User.username = '" + username + "';", new DynamicParameters());
+                var resultList = output.ToList<int>();
+                return resultList.First();
             }
-            catch
-            {
-                query.Dispose();
-                cnn.Close();
-                output = -1;
-            }
-
-            return output;
         }
 
         public List<Car> getAllCars()
         {
-            return null;
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            {
+                var output = cnn.Query<Car>("select * from Car;", new DynamicParameters());
+                return output.ToList();
+            }
         }
 
         public List<Car> getAllAvailableCars()
         {
-            return null;
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            {
+                var output = cnn.Query<Car>("select * from Car where is_available = 1;", new DynamicParameters());
+                return output.ToList();
+            }
         }
         public void saveSession(Session session)
         {
-           
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            {
+                cnn.Execute("insert into Session (username,login) values(@username, @login)",session);
+
+                var output = cnn.Query<Object>("select * from Session;", new DynamicParameters());
+                var resultList = output.ToList();
+                System.Threading.Thread.Sleep(20);
+            }    
         }
 
         public void logoutSession(Session session)
         {
-            //TODO
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            {
+                cnn.Execute("insert into Session (username,login,logout) values(@username, @login, @logout)", session);
+            }
         }
 
         public bool getAvailability(Car car)
         {
-            //TODO
-            return false;
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            {
+                var output = cnn.Query<int>("select Car.is_available from Car where Car.vin = '" + car.vin + "';", new DynamicParameters());
+                var resultList = output.ToList<int>();
+                return Convert.ToBoolean(resultList.First());
+            }
         }
 
         public void saveAvailability(Car car)
         {
-            //TODO
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            {
+                cnn.Execute("Update Car Set is_available = " + Convert.ToInt32(car.isAvailable) + "where vin = '" + car.vin + "'", car);
+            }
         }
 
         public void saveRental(Rental rental)
         {
-            //TODO
-        }
-
-        private int generateID(string table)
-        {
-            int output = -1;
-            cnn.Open();
-            SqlCommand query = new SqlCommand("SELECT MAX(SESSION_ID) FROM " + table + ";", cnn);
-            SqlDataReader resultList = null;
-            try
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                resultList = query.ExecuteReader();
-                if (resultList.Read())
-                {
-                    output = (Convert.ToInt32(resultList.GetValue(0))+1);
-                    resultList.Close();
-                    query.Dispose();
-                    cnn.Close();
-                }
-                else
-                {
-                    resultList.Close();
-                    query.Dispose();
-                    cnn.Close();
-                    output = -1;
-                }
+                cnn.Execute("insert into Rental (car_vin, cost, time_start, time_end) values(@car, @cost, @timeStart, @timeEnd)", rental);
             }
-            catch
-            {
-                query.Dispose();
-                cnn.Close();
-                output = -1;
-            }
-            return output;
-        }
-
-        private string toSqlDateTime(DateTime dateTime)
-        {
-            return dateTime.ToString("yyyyMMdd hh:mm:ss tt");
         }
     }
 }

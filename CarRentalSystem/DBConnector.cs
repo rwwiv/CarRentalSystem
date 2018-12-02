@@ -57,6 +57,7 @@ namespace CarRentalSystem
                 return output.ToList();
             }
         }
+
         public bool saveSession(Session session)
         {
             using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))

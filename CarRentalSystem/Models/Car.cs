@@ -10,11 +10,12 @@ namespace CarRentalSystem
     public class Car
     {
         [Key]
-        public string vin { get; private set; }
+        public string vin { get;  set; }
         public string color { get; private set; }
         public string model { get; private set; }
         public string make { get; private set; }
-        public bool isAvailable { get; private set; }
+        public bool isAvailable { get; set; }
         public int costPerDay { get; private set; }
+        public string description { get; set; }
     }
 }

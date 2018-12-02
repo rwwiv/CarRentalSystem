@@ -112,5 +112,23 @@ namespace CarRentalSystem
                     return true;
             }
         }
+
+        public List<Session> getAllSessions()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            {
+                var output = cnn.Query<Session>("select * from Session;", new DynamicParameters());
+                return output.ToList();
+            }
+        }
+
+        public List<Rental> getAllRentals()
+        {
+            using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
+            {
+                var output = cnn.Query<Rental>("select * from Session;", new DynamicParameters());
+                return output.ToList();
+            }
+        }
     }
 }

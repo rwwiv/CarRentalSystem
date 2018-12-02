@@ -159,6 +159,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Forms\UserMenuForm.resx">
+      <DependentUpon>UserMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\CarListItem.resx">
       <DependentUpon>CarListItem.cs</DependentUpon>
     </EmbeddedResource>

@@ -24,12 +24,34 @@ namespace CarRentalSystem
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            DBConnector cnn = new DBConnector();
-            Session session = new Session();
-            session.username = "testUser";
-            session.login = new DateTime(1999, 12, 12, 12, 12, 12);
-            cnn.saveSession(session);
-            System.Threading.Thread.Sleep(20);
+            if (LoginFailureLabel.Visible)
+            {
+                LoginFailureLabel.Visible = false;
+            }
+
+            //Process login
+            if (String.IsNullOrEmpty(UsernameTextBox.Text))
+            {
+                MessageBox.Show("Please provide your username.");
+            }
+            else if (String.IsNullOrEmpty(PasswordTextBox.Text))
+            {
+                MessageBox.Show("Please enter your password.");
+            }
+            else
+            {
+                //Success
+                if (LoginController.verifyUser(UsernameTextBox.Text, PasswordTextBox.Text))
+                {
+                    this.Close();
+                }
+                //Failure
+                else
+                {
+                    LoginFailureLabel.Visible = true;
+                    MessageBox.Show("Invalid username/password.");
+                }
+            }
         }
     }
 }

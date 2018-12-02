@@ -110,6 +110,7 @@
             this.Controls.Add(this.UsernameTextBox);
             this.Name = "LoginForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Car Rental System - Login";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);

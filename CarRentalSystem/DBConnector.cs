@@ -51,23 +51,29 @@ namespace CarRentalSystem
                 return output.ToList();
             }
         }
-        public void saveSession(Session session)
+        public bool saveSession(Session session)
         {
             using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                cnn.Execute("insert into Session (username,login) values(@username, @login)",session);
+                int rowsEffected = cnn.Execute("insert into Session (username,login) values(@username, @login)",session);
+                if (rowsEffected <= 0)
+                    return false;
+                else
+                    return true;
 
-                var output = cnn.Query<Object>("select * from Session;", new DynamicParameters());
-                var resultList = output.ToList();
-                System.Threading.Thread.Sleep(20);
             }    
         }
 
-        public void logoutSession(Session session)
+        public bool logoutSession(Session session)
         {
             using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                cnn.Execute("insert into Session (username,login,logout) values(@username, @login, @logout)", session);
+                int rowsEffected = cnn.Execute("insert into Session (username,login,logout) values(@username, @login, @logout)", session);
+
+                if (rowsEffected <= 0)
+                    return false;
+                else
+                    return true;
             }
         }
 
@@ -81,19 +87,29 @@ namespace CarRentalSystem
             }
         }
 
-        public void saveAvailability(Car car)
+        public bool saveAvailability(Car car)
         {
             using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                cnn.Execute("Update Car Set is_available = " + Convert.ToInt32(car.isAvailable) + "where vin = '" + car.vin + "'", car);
+                int rowsEffected = cnn.Execute("Update Car Set is_available = " + Convert.ToInt32(car.isAvailable) + "where vin = '" + car.vin + "'", car);
+
+                if (rowsEffected <= 0)
+                    return false;
+                else
+                    return true;
             }
         }
 
-        public void saveRental(Rental rental)
+        public bool saveRental(Rental rental)
         {
             using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                cnn.Execute("insert into Rental (car_vin, cost, time_start, time_end) values(@car, @cost, @timeStart, @timeEnd)", rental);
+                int rowsEffected = cnn.Execute("insert into Rental (car_vin, cost, time_start, time_end) values(@car, @cost, @timeStart, @timeEnd)", rental);
+
+                if (rowsEffected <= 0)
+                    return false;
+                else
+                    return true;
             }
         }
     }

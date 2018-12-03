@@ -144,6 +144,9 @@
     <Compile Include="Views\UserControls\CarListItem.Designer.cs">
       <DependentUpon>CarListItem.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Forms\AdminMenuForm.resx">
+      <DependentUpon>AdminMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +162,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Forms\RentConfirmForm.resx">
+      <DependentUpon>RentConfirmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Forms\UpdateConfirmForm.resx">
+      <DependentUpon>UpdateConfirmForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Forms\UserMenuForm.resx">
+      <DependentUpon>UserMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\CarListItem.resx">
       <DependentUpon>CarListItem.cs</DependentUpon>
     </EmbeddedResource>

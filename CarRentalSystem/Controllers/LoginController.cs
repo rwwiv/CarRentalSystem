@@ -9,7 +9,7 @@ namespace CarRentalSystem
 {
     class LoginController
     {
-        public static bool verifyUser(string username, string password)
+        public static bool verifyUser(string username, string password, LoginForm login)
         {
             DBConnector currentConnection = new DBConnector();
             string currentPW = currentConnection.getUserCred(username);
@@ -17,19 +17,27 @@ namespace CarRentalSystem
             {
                 if (validate(password, currentPW))
                 {
-                    int currentUserLevel = currentConnection.getLevel(username);
-                    Session currentSession = new Session();
-                    currentSession.username = username;
+                    User currentUser = new User(username, password, currentConnection.getLevel(username));
+
+                    Session currentSession = new Session(username);                
                     currentSession.login = DateTime.Now;
                     currentConnection.saveSession(currentSession);
+
                     List<Car> currentCars = new List<Car>();
-                    if (currentUserLevel == 1)
+
+                    if (currentUser.userLevel == 1)
                     {
                         currentCars = currentConnection.getAllCars();
+                        CarRentalSystem.Views.AdminMenuForm adminMenu = new CarRentalSystem.Views.AdminMenuForm(currentSession, currentUser, currentCars);
+                        adminMenu.login = login;
+                        adminMenu.Show();
                     }
                     else
                     {
                         currentCars = currentConnection.getAllAvailableCars();
+                        CarRentalSystem.Views.UserMenuForm userMenu = new CarRentalSystem.Views.UserMenuForm(currentSession, currentUser, currentCars);
+                        userMenu.login = login;
+                        userMenu.Show();
                     }
                     return true;
                 }

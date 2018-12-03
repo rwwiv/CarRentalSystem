@@ -28,7 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // AdminMenuForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(764, 611);
+            this.Name = "AdminMenuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Car Rental System - Administrative Menu";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

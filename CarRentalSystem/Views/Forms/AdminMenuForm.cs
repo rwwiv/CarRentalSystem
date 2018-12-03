@@ -10,7 +10,7 @@ namespace CarRentalSystem.Views
 {
     public partial class AdminMenuForm : CarRentalSystem.MainMenu
     {
-        public AdminMenuForm()
+        public AdminMenuForm(Session currentSession, User currentUser, List<Car> currentCars) : base(currentSession, currentUser, currentCars)
         {
             InitializeComponent();
         }

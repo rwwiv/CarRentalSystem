@@ -13,5 +13,11 @@ namespace CarRentalSystem
         public string username { get; private set; }
         public string password { get; private set; }
         public int userLevel { get; private set;  }
+
+        public User(string username, string password, int userLevel) {
+            this.username = username;
+            this.password = password;
+            this.userLevel = userLevel;
+        }
     }
 }

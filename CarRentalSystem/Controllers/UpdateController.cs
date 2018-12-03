@@ -9,9 +9,15 @@ namespace CarRentalSystem
     class UpdateController
     {
 
-        public void update(Car car)
+        public static void update(Car car)
         {
-            //TODO
+            CarRentalSystem.Views.UpdateConfirm updateConfirm = new CarRentalSystem.Views.UpdateConfirm(car);
+            updateConfirm.Show();
+        }
+
+        public static bool confirm(Car car) {
+            DBConnector currentConnection = new DBConnector();
+            return currentConnection.saveAvailability(car);
         }
     }
 }

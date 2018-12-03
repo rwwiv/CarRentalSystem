@@ -31,6 +31,7 @@
             this.LogoutButton = new System.Windows.Forms.Button();
             this.CarListPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.MenuTitle = new System.Windows.Forms.Label();
+            this.Refresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LogoutButton
@@ -49,10 +50,9 @@
             // 
             this.CarListPanel.AutoScroll = true;
             this.CarListPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.CarListPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.CarListPanel.Location = new System.Drawing.Point(12, 83);
             this.CarListPanel.Name = "CarListPanel";
-            this.CarListPanel.Size = new System.Drawing.Size(740, 516);
+            this.CarListPanel.Size = new System.Drawing.Size(740, 445);
             this.CarListPanel.TabIndex = 1;
             // 
             // MenuTitle
@@ -65,11 +65,24 @@
             this.MenuTitle.TabIndex = 2;
             this.MenuTitle.Text = "Available Cars";
             // 
+            // Refresh
+            // 
+            this.Refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Refresh.Location = new System.Drawing.Point(592, 548);
+            this.Refresh.Name = "Refresh";
+            this.Refresh.Size = new System.Drawing.Size(160, 41);
+            this.Refresh.TabIndex = 3;
+            this.Refresh.Text = "Refresh";
+            this.Refresh.UseVisualStyleBackColor = true;
+            this.Refresh.Click += new System.EventHandler(this.Refresh_CarAvailability);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 611);
+            this.Controls.Add(this.Refresh);
             this.Controls.Add(this.MenuTitle);
             this.Controls.Add(this.CarListPanel);
             this.Controls.Add(this.LogoutButton);
@@ -77,6 +90,7 @@
             this.ShowIcon = false;
             this.Text = "Car Rental System - Main Menu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
+            this.Load += new System.EventHandler(this.MainMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,5 +101,6 @@
         private System.Windows.Forms.Button LogoutButton;
         private System.Windows.Forms.FlowLayoutPanel CarListPanel;
         private System.Windows.Forms.Label MenuTitle;
+        private System.Windows.Forms.Button Refresh;
     }
 }

@@ -14,5 +14,9 @@ namespace CarRentalSystem
         public string username { get; set; }
         public DateTime login { get; set; }
         public DateTime logout { get; set; }
+
+        public Session(string username) {
+            this.username = username;
+        }
     }
 }

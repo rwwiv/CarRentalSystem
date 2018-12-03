@@ -8,9 +8,15 @@ namespace CarRentalSystem.Controllers
 {
     class RentController
     {
-        public void rent(Car car,string user)
+        public static void rent(Car car,string username)
         {
-            //TODO
+            CarRentalSystem.Views.RentConfirm rentConfirm = new CarRentalSystem.Views.RentConfirm(car, username);
+            rentConfirm.Show();
+        }
+
+        public static bool confirm(Rental currentRental) {
+            DBConnector currentConnection = new DBConnector();
+            return currentConnection.saveRental(currentRental);
         }
     }
 }

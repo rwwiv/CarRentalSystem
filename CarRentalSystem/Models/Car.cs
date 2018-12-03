@@ -15,7 +15,7 @@ namespace CarRentalSystem
         public string model { get; private set; }
         public string make { get; private set; }
         public string description { get; set; }
-        public bool is_available { get; private set; }
+        public bool is_available { get; set; }
         public int cost_per_day { get; private set; }
     }
 }

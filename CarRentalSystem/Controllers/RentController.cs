@@ -14,9 +14,9 @@ namespace CarRentalSystem.Controllers
             rentConfirm.Show();
         }
 
-        public static bool confirm(Rental currentRental) {
+        public static bool confirm(Rental currentRental, string username) {
             DBConnector currentConnection = new DBConnector();
-            return currentConnection.saveRental(currentRental);
+            return currentConnection.saveRental(currentRental, username);
         }
     }
 }

@@ -110,7 +110,7 @@ namespace CarRentalSystem
             }
         }
 
-        public bool saveRental(Rental rental)
+        public bool saveRental(Rental rental, string username)
         {
             using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {

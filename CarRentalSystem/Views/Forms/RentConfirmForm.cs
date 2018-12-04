@@ -27,7 +27,7 @@ namespace CarRentalSystem.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (CarRentalSystem.Controllers.RentController.confirm(new Rental(currentCar.vin, currentSubtotal, dateTimePicker1.Value, dateTimePicker2.Value)))
+            if (CarRentalSystem.Controllers.RentController.confirm(new Rental(currentCar.vin, currentSubtotal, dateTimePicker1.Value, dateTimePicker2.Value)), currentUsername)
             {
                 MessageBox.Show($"Your rental has been confirmed.\nPickup: {dateTimePicker1.Value}\nReturn: {dateTimePicker2.Value}\nSubtotal: {this.rentalSubtotal.Text}");
                 this.Dispose();

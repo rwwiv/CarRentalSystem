@@ -55,11 +55,7 @@ namespace CarRentalSystem
             }
             string hashedPW = sb.ToString();
 
-            if (hashedPW.Equals(dbpw))
-            {
-                return true;
-            }
-            return false;
+            return hashedPW.Equals(dbpw);
         }
     }
 }

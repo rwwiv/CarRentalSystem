@@ -115,7 +115,11 @@ namespace CarRentalSystem
             using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
                 int rowsEffected = cnn.Execute("insert into Rental (car_vin, cost, time_start, time_end) values(@car, @cost, @timeStart, @timeEnd)", rental);
-
+                Car tempCar = new Car();
+                tempCar.is_available = false;
+                tempCar.vin = rental.car;
+                tempCar.description = "Car rented out to " + username;
+                saveAvailability(tempCar);
                 if (rowsEffected <= 0)
                     return false;
                 else

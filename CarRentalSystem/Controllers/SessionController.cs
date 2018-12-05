@@ -8,5 +8,9 @@ namespace CarRentalSystem
 {
     class SessionController
     {
+        public void confirmLogout(string input)
+        {
+            //TODO
+        }
     }
 }

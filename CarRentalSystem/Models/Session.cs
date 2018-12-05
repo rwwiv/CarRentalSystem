@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,14 @@ namespace CarRentalSystem
 {
     public class Session
     {
-        private string username { get; set; }
-        private DateTime login { get; set; }
-        private DateTime logout { get; set; }
+        [Key]
+        public int sessionId { get; set; }
+        public string username { get; set; }
+        public DateTime login { get; set; }
+        public DateTime logout { get; set; }
+
+        public Session(string username) {
+            this.username = username;
+        }
     }
 }

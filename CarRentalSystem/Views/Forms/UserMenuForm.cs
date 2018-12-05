@@ -3,23 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CarRentalSystem
+namespace CarRentalSystem.Views
 {
-    public partial class LoginForm : Form
+    public partial class UserMenuForm : CarRentalSystem.MainMenu
     {
-        public LoginForm()
+        public UserMenuForm(Session currentSession, User currentUser, List<Car> currentCars) : base(currentSession, currentUser, currentCars)
         {
             InitializeComponent();
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

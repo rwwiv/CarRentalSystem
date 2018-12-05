@@ -1,6 +1,6 @@
-﻿namespace CarRentalSystem
+﻿namespace CarRentalSystem.Views
 {
-    partial class MainMenu
+    partial class UserMenuForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // MainMenu
+            // UserMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "MainMenu";
-            this.ShowIcon = false;
-            this.Text = "Car Rental System - Main Menu";
+            this.ClientSize = new System.Drawing.Size(764, 611);
+            this.Name = "UserMenuForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
 
         }

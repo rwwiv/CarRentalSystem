@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,13 @@ namespace CarRentalSystem
 {
     public class Car
     {
-        private string vin { get; set; }
-        private string color { get; set; }
-        private string model { get; set; }
-        private string make { get; set; }
-        private Boolean isAvailable { get; set; }
-        private int costPerDay { get; set; }
+        [Key]
+        public string vin { get;  set; }
+        public string color { get; private set; }
+        public string model { get; private set; }
+        public string make { get; private set; }
+        public string description { get; set; }
+        public bool is_available { get; set; }
+        public int cost_per_day { get; private set; }
     }
 }

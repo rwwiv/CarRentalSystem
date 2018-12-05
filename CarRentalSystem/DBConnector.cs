@@ -110,20 +110,26 @@ namespace CarRentalSystem
             }
         }
 
-        public bool saveRental(Rental rental, string username)
+        public int saveRental(Rental rental, string username)
         {
             using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                int rowsEffected = cnn.Execute("insert into Rental (car_vin, cost, time_start, time_end) values(@car, @cost, @timeStart, @timeEnd)", rental);
+                Car queryCar = new Car();
+                queryCar.vin = rental.car;
+                if (!getAvailability(queryCar))
+                {
+                    return 0;
+                }
+                int rowsEffected = cnn.Execute("insert into Rental (car_vin, cost, time_start, time_end, user_id) values(@car, @cost, @timeStart, @timeEnd, '"+ username +"')", rental);
                 Car tempCar = new Car();
                 tempCar.is_available = false;
                 tempCar.vin = rental.car;
                 tempCar.description = "Car rented out to " + username;
                 saveAvailability(tempCar);
                 if (rowsEffected <= 0)
-                    return false;
+                    return -1;
                 else
-                    return true;
+                    return rowsEffected;
             }
         }
 

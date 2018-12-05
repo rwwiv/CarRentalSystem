@@ -27,12 +27,19 @@ namespace CarRentalSystem.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (CarRentalSystem.Controllers.RentController.confirm(new Rental(currentCar.vin, currentSubtotal, dateTimePicker1.Value, dateTimePicker2.Value), currentUsername))
+            int transStatus = CarRentalSystem.Controllers.RentController.confirm(new Rental(currentCar.vin, currentSubtotal, dateTimePicker1.Value, dateTimePicker2.Value), currentUsername);
+            if (transStatus > 0)
             {
                 MessageBox.Show($"Your rental has been confirmed.\nPickup: {dateTimePicker1.Value}\nReturn: {dateTimePicker2.Value}\nSubtotal: {this.rentalSubtotal.Text}");
+                
                 this.Dispose();
             }
-            else {
+            else if(transStatus == 0)
+            {
+                MessageBox.Show("Car is not available. Refresh the page to remove unavailable car from list.");
+            }
+            else
+            {
                 MessageBox.Show("There was an error confirming your rental.");
             }
         }

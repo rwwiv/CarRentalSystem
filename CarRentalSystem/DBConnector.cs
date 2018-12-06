@@ -101,8 +101,15 @@ namespace CarRentalSystem
         {
             using (IDbConnection cnn = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString))
             {
-                int rowsEffected = cnn.Execute("Update Car Set is_available = " + Convert.ToInt32(car.is_available) + ", description = " +"'" + car.description +"'" + "where vin = '" + car.vin + "'", car);
-
+                int rowsEffected;
+                if (car.description == null || car.description == "")
+                {
+                    rowsEffected = cnn.Execute("Update Car Set is_available = " + Convert.ToInt32(car.is_available) + ", description = " + "'" + "Car returned from user and is ready for new rental client." + "'" + "where vin = '" + car.vin + "'", car);
+                }
+                else
+                {
+                    rowsEffected = cnn.Execute("Update Car Set is_available = " + Convert.ToInt32(car.is_available) + ", description = " + "'" + car.description + "'" + "where vin = '" + car.vin + "'", car);
+                }
                 if (rowsEffected <= 0)
                     return false;
                 else

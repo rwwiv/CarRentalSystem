@@ -12,12 +12,23 @@ namespace CarRentalSystem
         public static bool verifyUser(string username, string password, LoginForm login)
         {
             DBConnector currentConnection = new DBConnector();
-            string currentPW = currentConnection.getUserCred(username);
+
+            HashAlgorithm algo = MD5.Create();
+            byte[] temp = algo.ComputeHash(Encoding.UTF8.GetBytes(username));
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in temp)
+            {
+                sb.Append(b.ToString("X2"));
+            }
+            string hashedUsername = sb.ToString();
+
+            string currentPW = currentConnection.getUserCred(hashedUsername);
+
             if (!String.IsNullOrEmpty(currentPW))
             {
                 if (validate(password, currentPW))
                 {
-                    User currentUser = new User(username, password, currentConnection.getLevel(username));
+                    User currentUser = new User(username, password, currentConnection.getLevel(hashedUsername));
 
                     Session currentSession = new Session(username);                
                     currentSession.login = DateTime.Now;
